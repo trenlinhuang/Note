@@ -8,6 +8,7 @@
 ##**代码**
 
 **服务端: server.js**
+
     //服务端引入中间件mosca
     let mosca = require('mosca')
     let settings = {
@@ -25,6 +26,7 @@
       console.log('disconnected: ', client.id)
     })
 **推送端: pub.js**
+
     //客户端引入mqtt
     let mqtt = require('mqtt');
     
@@ -42,6 +44,7 @@
     }, 1000)
   
   **订阅端: sub.js**
+
     let mqtt = require('mqtt')
     
     let client = mqtt.connect('mqtt://localhost', {
@@ -66,6 +69,7 @@ server运行后，先启动sub，再启动pub，即可在sub中接收到推送�
 此处用到的是mongo，当然可以根据需要选择其他的存储工具
 
 **server.js中的settings需更改为:**
+
     let settings = {
       port: 5112,
       persistence:{    //增加了此项
@@ -88,6 +92,7 @@ url: 其中的 27017 为mongo所监听的端口号，mosca为存储相关数据�
 离线配置-客户端：
 ----
 **pub.js和sub.js中的client中都可以改为：**
+
     let client = mqtt.connect('mqtt://localhost', {
       port: 5112,
       clientId: 'cli_**',
@@ -109,6 +114,7 @@ mqtt.connect()会返回一个mqttClient对象，包含了：reconnect(), subscri
 ----
 **client.subscribe():**
 为本客户端订阅一个话题，所有订阅此话题的用户都会收到在此话题下推送的信息
+
     //client.subscribe(topic,opts)
     client.subscribe('test',{qos:1})
 opts中的qos为通信机制，控制发送端与接收端的互锁程度
@@ -126,6 +132,7 @@ opts中的qos为通信机制，控制发送端与接收端的互锁程度
 **client.publish():**
 向指定topic发送数据
 *message为Buffer或String格式，可以通过序列化或转json实现对复杂数据对象的传送*
+
     //client.publish(topic, message, opts, callback)
     let num = 0;
     setInterval(function (){
@@ -153,6 +160,7 @@ mosca把每一条推送消息为所有订阅用户都生成了独立的记录，
 
 **client.on():**
 即在client上触发的事件，此处只列举消息接收事件
+
     //client.on(event, callback)
     client.on('message', function (topic, message) {
       console.log('received message: ', message.toString())
