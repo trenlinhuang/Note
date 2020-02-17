@@ -87,7 +87,7 @@ url: 其中的 27017 为mongo所监听的端口号，mosca为存储相关数据�
 在mongo中，可以看到自动新添了db: mosca
 及其下的collection(相当于关系型数据库中的表/关系)
 
-![clipboard.png](/img/bVbnHgN)
+![clipboard.png](https://image-static.segmentfault.com/174/846/1748466158-5c487e8e29a75_articlex)
 
 离线配置-客户端：
 ---
@@ -112,7 +112,7 @@ mqtt.connect()会返回一个mqttClient对象，包含了：reconnect(), subscri
 **至此，所有代码已完成**
 
 其他介绍：
-----
+---
 
 **client.subscribe():**
 为本客户端订阅一个话题，所有订阅此话题的用户都会收到在此话题下推送的信息
@@ -123,15 +123,15 @@ opts中的qos为通信机制，控制发送端与接收端的互锁程度
 上文中的其中一个collection: subscriptions即记录各用户话题订阅情况
 
 用户cli_sub及cli2_sub订阅了话题test:
-![clipboard.png](/img/bVbnHio)
+![clipboard.png](https://segmentfault.com/img/bVbnHio?w=563&h=134)
 (新增一个cli2_pub，下文有用)
 
 *注：*
 *重复执行脚本sub.js实际上对topic进行了重复订阅*
 *实际编码时，应避免topic的重复订阅，即使重复订阅并不影响实现效果*
 
-
 **client.publish():**
+
 向指定topic发送数据
 *message为Buffer或String格式，可以通过序列化或转json实现对复杂数据对象的传送*
 
@@ -147,16 +147,16 @@ opts中的qos为通信机制，控制发送端与接收端的互锁程度
 此处用一个定时器定时在 topic: test 下发送'Hello mqtt 1,2,3..'
 
 用回调函数实时打印一下发送的num：
-![clipboard.png](/img/bVbnHol)
+![clipboard.png](https://segmentfault.com/img/bVbnHol?w=268&h=48)
 
 当订阅者处于离线状态时，可以在collection: packets中查看到临时数据的存储情况：
-![clipboard.png](/img/bVbnHm5)
+![clipboard.png](https://segmentfault.com/img/bVbnHm5?w=992&h=171)
 mosca把每一条推送消息为所有订阅用户都生成了独立的记录，用同一个messageId进行关联
 
 当其中一个用户(cli2_sub)上线时，获取到其对应的数据，
-![clipboard.png](/img/bVbnHok)
+![clipboard.png](https://segmentfault.com/img/bVbnHok?w=269&h=52)
 而后数据库中相应记录便会被删除
-![clipboard.png](/img/bVbnHnS)
+![clipboard.png](https://segmentfault.com/img/bVbnHnS?w=997&h=107)
 此时仅有cli_sub用户的数据
 当cli2_sub上线接收消息后，packets中记录将被清空
 
@@ -168,7 +168,9 @@ mosca把每一条推送消息为所有订阅用户都生成了独立的记录，
       console.log('received message: ', message.toString())
     })
 处理为简单地打印到控制台
+
 ## **附**
+
 >mosca.js文档：
 https://www.npmjs.com/package/mosca
 
