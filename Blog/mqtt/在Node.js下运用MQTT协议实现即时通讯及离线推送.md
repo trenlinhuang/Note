@@ -1,11 +1,12 @@
-##**前言**
+## **前言**
+
 前些日子了解到mqtt这样一个协议，可以在web上达到即时通讯的效果，但网上并不能很方便地找到一篇**目前版本**的在node下正确实现这个协议的博客。
 
 自己捣鼓了一段时间，理解不深刻，但也算是基本能够达到使用目的。
 
 本文目的为对MQTT有需求的学习者提供一定程度上的便利，省去了查阅官方文档及源码的功夫，但尚未对离线消息的接收顺序进行处理。
 
-##**代码**
+## **代码**
 
 **服务端: server.js**
 
@@ -61,10 +62,11 @@
 server运行后，先启动sub，再启动pub，即可在sub中接收到推送过来的消息序列
 **至此实现了简单的即时推送**
 
-##**离线推送相关配置及简要介绍**
+## **离线推送相关配置及简要介绍**
 
 离线配置-服务端：
-----
+---
+
 要实现消息的离线推送，必然需要一个存储临时数据的部件
 此处用到的是mongo，当然可以根据需要选择其他的存储工具
 
@@ -80,17 +82,16 @@ server运行后，先启动sub，再启动pub，即可在sub中接收到推送�
 factory: 引入mosca对特定存储工具的一些处理方法
 url: 其中的 27017 为mongo所监听的端口号，mosca为存储相关数据的数据库
 
-值得一提的是：配置好mongo的环境后，不需要提前在mongo中手动创建，若数据库不存在会自动生成，而且mosca会为你作好其他一切基本事项 *(即：若只想临时体验下效果，甚至可以暂时把mongo放一边 ) *
+值得一提的是：配置好mongo的环境后，不需要提前在mongo中手动创建，若数据库不存在会自动生成，而且mosca会为你作好其他一切基本事项 **(即：若只想临时体验下效果，甚至可以暂时把mongo放一边 )**
 
 在mongo中，可以看到自动新添了db: mosca
 及其下的collection(相当于关系型数据库中的表/关系)
 
 ![clipboard.png](/img/bVbnHgN)
 
-
-
 离线配置-客户端：
-----
+---
+
 **pub.js和sub.js中的client中都可以改为：**
 
     let client = mqtt.connect('mqtt://localhost', {
@@ -112,6 +113,7 @@ mqtt.connect()会返回一个mqttClient对象，包含了：reconnect(), subscri
 
 其他介绍：
 ----
+
 **client.subscribe():**
 为本客户端订阅一个话题，所有订阅此话题的用户都会收到在此话题下推送的信息
 
@@ -166,14 +168,17 @@ mosca把每一条推送消息为所有订阅用户都生成了独立的记录，
       console.log('received message: ', message.toString())
     })
 处理为简单地打印到控制台
-##**附**
+## **附**
 >mosca.js文档：
 https://www.npmjs.com/package/mosca
-mqtt.js文档：
+
+>mqtt.js文档：
 https://www.npmjs.com/package/mqtt
-windows环境下mongo的配置：
+
+>windows环境下mongo的配置：
 https://jingyan.baidu.com/article/6b97984dbeef881ca2b0bf3e.html
-及一位前辈的文章：
+
+>及一位前辈的文章：
 https://www.jianshu.com/p/8315acec4e6b
 
 转载请注明出处 ; )
