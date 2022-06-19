@@ -1,0 +1,15 @@
+create table S(Sno char(3), Sname char(4), Ssex smallint);
+create table C(Cno char(3), Cname char(4));
+create table SC(Sno char(3), Cno char(3), grade int);
+
+select Cno, count(Sno) as number from SC group by Cno having number>4;
+
+select Sname from spj_s where Sno in(
+select distinct Sno from spj_spj, spj_j
+where spj_spj.Jno = spj_j.Jno and spj_j.Jname = 'j1');
+
+select Jno from spj_j
+where Jno not in(
+select Jno from spj_spj, spj_p, spj_s
+where spj_spj.Pno = spj_p.Pno and spj_spj.Sno = spj_s.Sno
+and spj_s.city = 'tianjin' and spj_p.color = 'red');
