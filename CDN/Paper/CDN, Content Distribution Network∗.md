@@ -40,5 +40,7 @@ The basic approach to address the performance problem is to move the content fro
 
 CDN replicates a very selective set of content to the replica servers and only sends those requests for the replicated content to a replica server.
 
-**How to place replica servers and distribute content copies to replica servers and how to route the requests to the proper replica server having the desired content are the key challenges in designing an effective CDN, and are the major topics we will discuss.**
-
+**Key Challenges:**
+* How to place replica servers
+* distribute content copies to replica servers
+* how to route the requests to the proper replica server having the desired content
