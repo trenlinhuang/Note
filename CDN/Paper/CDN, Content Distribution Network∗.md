@@ -37,10 +37,17 @@ The basic approach to address the performance problem is to move the content fro
   > Data Communications: Data transmission and data reception or, more broadly, **data communication** or digital communications is the transfer and reception of data in the form of a digital bitstream or a digitized analog signal[1] over a point-to-point or point-to-multipoint communication channel.<br>from: https://en.wikipedia.org/wiki/Data_communication
 
 **How Dose The CDN Do:**
-
 CDN replicates a very selective set of content to the replica servers and only sends those requests for the replicated content to a replica server.
 
 **Key Challenges:**
 * How to place replica servers
 * distribute content copies to replica servers
-* how to route the requests to the proper replica server having the desired content
+* how to route the requests to the proper replica server having the desired content 
+
+## Overview
+...
+the fact that many objects are **not cacheable but replicable❓**, which include dynamic objects with read-only access and personalized objects (e.g., "cookied" requests), makes CDN indispensable.
+
+![A General Architecture of CDN](./img/System%20Architecture%20Components%20of%20a%20CDN.png)<br>
+Figure 1: System Architecture Components of a CDN
+### 2.1 A General Architecture of CDN
