@@ -48,6 +48,6 @@ CDN replicates a very selective set of content to the replica servers and only s
 ...
 the fact that many objects are **not cacheable but replicable❓**, which include dynamic objects with read-only access and personalized objects (e.g., "cookied" requests), makes CDN indispensable.
 
-![A General Architecture of CDN](./img/System%20Architecture%20Components%20of%20a%20CDN.png)<br>
+![A General Architecture of CDN](./System%20Architecture%20Components%20of%20a%20CDN.png)<br>
 Figure 1: System Architecture Components of a CDN
 ### 2.1 A General Architecture of CDN
