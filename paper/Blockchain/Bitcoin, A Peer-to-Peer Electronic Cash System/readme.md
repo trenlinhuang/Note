@@ -70,7 +70,7 @@ source: https://bitcoin.org/bitcoin.pdf
 **Block time control** To compensate for increasing hardware speed and varying interest in running nodes over time,the proof-of-work difficulty is determined by a moving average targeting an average number ofblocks per hour. If they're generated too fast, the difficulty increases.
 
 ## 5. Network
-**How to forming the bext block**
+**How to forming the next block**
 * New transactions are broadcast to all nodes.
 * Each node collects new transactions into a block.
 * Each node works on finding a difficult proof-of-work for its block.
