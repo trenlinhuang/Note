@@ -1,5 +1,5 @@
 # 0. 标记
-* 💡：显示声明是我的而不是原文作者的观点，可能欠缺严谨性
+* 💡：显式声明是我的而不是原文作者的观点，可能欠缺严谨性
 * ❓：存疑点
 # 1. 简介
 来源：[Functional Go: 持久化数据结构简介 [1] - 持久化数据结构简介](https://io-meter.com/2016/09/03/Functional-Go-persist-datastructure-intro/)
