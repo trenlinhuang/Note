@@ -34,3 +34,10 @@ Since the attribute value or attribute policy for a secret key might change with
 A natural requirement of institutional money is regulatory compliance. Due to the sensitive nature of know-your-client (KYC) information, users, especially newcomers to DeFi are usually reluctant to give out their **private information** to the DeFi apps mostly due to the fear of losing control of their private data.
 
 In fact, `functional encryption` was originally proposed as a tool to enforce fine-grained access control over encrypted data [GPSW2006]. Therefore, it is a natural solution to all the aforementioned access control problems. ... functional encryption can also serve as a handy tool for the private data-sharing platform between TradFi and DeFi.
+
+The major technical contributions of this project will be:
+- We build a private **data management framework** by leveraging the power of **functional encryption** and **smart contracts**. The proposed system will enable:
+  - A fine-grained `data management layer` for the multi-chain world and Web 3.0, including a private data sharing platform between TradFi and DeFi, NFT-gated access, etc.
+  - A Fine-grained `access control policy layer` is proposed so that it can be built into the smart contracts to be deployed in multi-chain.
+- We devise an access control mechanism to ensure that legitimate buyers, on receiving the data owner’s permission, can get access to the target data
+- We introduce a payment system, which will not only enforce payment privacy when needed but allow the accrue of value transferred among different parties in the system.
