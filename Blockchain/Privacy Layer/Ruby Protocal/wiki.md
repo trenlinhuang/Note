@@ -41,3 +41,27 @@ The major technical contributions of this project will be:
   - A Fine-grained `access control policy layer` is proposed so that it can be built into the smart contracts to be deployed in multi-chain.
 - We devise an access control mechanism to ensure that legitimate buyers, on receiving the data owner’s permission, can get access to the target data
 - We introduce a payment system, which will not only enforce payment privacy when needed but allow the accrue of value transferred among different parties in the system.
+
+# Architecture
+### Layers Structure
+#### Policy Management Layer
+The policy management layer defines the **access control** policy of the functional encryption scheme in the specific application scenarios.
+> For instance, in the case of private data sharing between TradFi and DeFi, it will be the regulatory authorities and users who will be responsible for defining exactly what kind of private KYC information is allowed to leak to what kind of third-party DeFi apps.
+
+#### Storage Layer
+The storage layer is responsible for storing the encrypted message under functional encryption scheme. The *digital watermarking technology❓* will add an additional authenticity guarantee to the underlying message.
+
+#### Credential Issuance Layer
+It will be responsible for setting up all the key authorities in the system.
+
+### Application Layer
+...
+
+## Functional Encryption
+### Background
+There are three relevant projects to Ruby:
+1. The first one is perhaps the Enigma project, a privacy protocol that **enables the creation of decentralized applications (DApps) that guarantee privacy**. The protocol Enigma is based on secure `multi-party computation` (MPC). 
+2. The second one, Insights Network, is a **data exchange protocol** based on combining blockchain technology, Substrate module, and MPC. *It is based on the EOS blockchain and a custom MPC system.❓*
+3. The third one, NuCypher, is a **cryptographic infrastructure** for privacy-preserving applications. Its main technology is threshold proxy re-encryption and fully homomorphic encryption.
+
+Compared with traditional public-key encryption schemes that only allow the message receiver to either decrypt the whole data set or nothing, functional encryption allows the sender to determine exactly which part of the message can be decrypted by exactly which kinds of receivers.（公钥加密模式解密全部信息，但functional加密可以定义不同的接收者能够解密的部分）
