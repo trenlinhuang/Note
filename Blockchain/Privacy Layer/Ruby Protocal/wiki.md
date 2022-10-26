@@ -64,4 +64,16 @@ There are three relevant projects to Ruby:
 2. The second one, Insights Network, is a **data exchange protocol** based on combining blockchain technology, Substrate module, and MPC. *It is based on the EOS blockchain and a custom MPC system.❓*
 3. The third one, NuCypher, is a **cryptographic infrastructure** for privacy-preserving applications. Its main technology is threshold proxy re-encryption and fully homomorphic encryption.
 
-Compared with traditional public-key encryption schemes that only allow the message receiver to either decrypt the whole data set or nothing, functional encryption allows the sender to determine exactly which part of the message can be decrypted by exactly which kinds of receivers.（公钥加密模式解密全部信息，但functional加密可以定义不同的接收者能够解密的部分）
+Compared with traditional public-key encryption schemes that only allow the message receiver to either decrypt the whole data set or nothing, functional encryption allows the sender to determine exactly which part of the message can be decrypted by exactly which kinds of receivers.（💡公钥加密模式解密全部信息，但functional加密可以定义不同的接收者能够解密的部分）
+
+### Introduction
+Function encryption was first proposed by Boneh, Sahai and Waters in 2011. This encryption al- gorithm broke the original ”All-or-Nothing” data query mode. **The computing results of functional encrypted data can be obtained without revealing the plaintext content**.（❓不揭露明文的情况下解密一些信息？）
+
+A classic Functional Encryption Scheme contains four algorithms, namely:
+- FE.Setup: (pk,msk) ← Setup(1<sup>λ</sup>). 生成主私钥msk和公钥pk
+- FE.KeyGen: sk ← KeyGen(msk, f). 用主私钥来生成函数f的一个新私钥sk
+- FE.Enc: c ← Encrypt(pk, x). 用公钥加密消息x
+- FE.Dec: y ← Decrypt(sk, c). 用函数f的私钥解密密文得到消息y
+
+... the data owner can specify who can access the encrypted data and has complete control over the data, *Ruby will use the Ciphertext-Policy ABE (CP-ABE) or Key-Policy ABE (KP-ABE) algorithm in the Functional Encryption algorithm to encrypt their personal data*
+
