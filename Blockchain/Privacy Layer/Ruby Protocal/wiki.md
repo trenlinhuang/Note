@@ -77,3 +77,31 @@ A classic Functional Encryption Scheme contains four algorithms, namely:
 
 ... the data owner can specify who can access the encrypted data and has complete control over the data, *Ruby will use the Ciphertext-Policy ABE (CP-ABE) or Key-Policy ABE (KP-ABE) algorithm in the Functional Encryption algorithm to encrypt their personal data*
 
+### ABE Scheme
+> **The empty key ε:** The special key ε in K captures **all the information about the plaintext that intentionally leaks from the ciphertext**, such as the length of the encrypted plaintext. The secret key for ε is empty and also denoted by ε. Thus, anyone can run dec(ε, c) on a ciphertext c ← enc(pp, x) and obtain all the information about x that intentionally leaks from c.
+
+> **Predicate encryption** [BW07, KSW08]. In many applications a plaintext x ∈ X is itself a pair (ind, m) ∈ I × M where ind is called an index and m is called the payload message. *For example, in an email system the index might be the sender's name while the payload is the email contents.*
+
+#### Attribute-Based Encryption（补充）
+source: https://link.springer.com/content/pdf/10.1007/978-3-642-19571-6_16.pdf
+
+Sahai and Waters [SW05] proposed a notion of encryption, called Attribute-Based Encryption (ABE), where **one could express complex access policies**. Subsequently, Goyal, Pandey, Sahai and Waters [GPSW06] refined this concept into two different formulations of ABE: `Key Policy ABE` and `Ciphertext-Policy ABE`.
+
+**Key-Policy ABE**
+
+We first describe Key-Policy ABE for boolean formulas, as was realized by Goyal et. al. [GPSW06] 4 . A Key-Policy ABE system over n variables can be described as a predicate encryption scheme (with public index) for the predicate Pn : K × I → {0, 1} where:
+1. The key space K is the set of all poly-sized boolean formulas φ in n variables z = (z1, . . . , zn) ∈ {0, 1}<sup>n</sup>. We let φ(z) denote the value of the formula φ at z.（💡键空间是多项式函数φ集合，它的参数为长度为n的布尔向量）
+2. The plaintext is a pair (ind = z, m) where the index space is I := {0, 1}<sup>n</sup>, and where we interpret z as a bit vector representing the boolean values z1, . . . zn.（💡明文是一个元组(ind = z, m)，索引（index）的定义域为长度为n的比特向量空间）
+3. The predicate Pn on K × I is defined as<br>![alt](Predicat%20Pn.png)
+
+**Ciphertext-Policy ABE**
+
+A dual concept of Attribute-Based Encryption is CiphertextPolicy Attribute-Based Encryption (CP-ABE), where **the roles of the ciphertext and key are essentially reversed**.
+1. The key space K := {0, 1}n is the set of all n bit strings representing n boolean variables z = (z1, . . . , zn) ∈ {0, 1}<sup>n</sup>.（💡键空间是索引，定义域为比特串）
+2. The plaintext is a pair (ind = φ, m) where the index space I is the set of all poly-sized boolean formulas φ over n variables.（💡明文是一个元组(ind = φ, m)）
+
+
+Based on the ABE scheme, Ruby will support the revocation and restoration of user attributes. The execution includes 7 steps:
+1. FE.Setup
+2. FE.Setup.Cancel: 
+
